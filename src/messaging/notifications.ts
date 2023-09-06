@@ -56,7 +56,7 @@ module.exports = function (Messaging: any) {
         }, meta.config.notificationSendDelay * 1000);
     };
 
-    async function sendNotifications(fromuid, uids, roomId, messageObj) {
+    async function sendNotifications(fromuid: string, uids: string[], roomId: string, messageObj: any) {
         const isOnline = await user.isOnline(uids);
         uids = uids.filter((uid, index) => !isOnline[index] && parseInt(fromuid, 10) !== parseInt(uid, 10));
         if (!uids.length) {
